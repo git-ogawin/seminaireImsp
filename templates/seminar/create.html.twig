@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un séminaire{% endblock %}
+
+{% block body %}
+<h1>Créer un séminaire</h1>
+
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-success mt-3">Créer</button>
+{{ form_end(form) }}
+
+<a href="{{ path('app_seminar_index') }}" class="btn btn-link mt-3">Retour à la liste</a>
+{% endblock %}

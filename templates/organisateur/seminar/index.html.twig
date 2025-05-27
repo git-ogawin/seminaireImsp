@@ -1,0 +1,43 @@
+{# templates/organisateur/seminar/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes séminaires{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1 class="mb-4">Mes séminaires organisés</h1>
+
+    {% if seminars is empty %}
+        <div class="alert alert-warning">
+            Vous n'avez encore organisé aucun séminaire.
+        </div>
+    {% else %}
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for seminar in seminars %}
+                    <tr>
+                        <td>{{ seminar.title }}</td>
+                        <td>{{ seminar.date ? seminar.date|date('d/m/Y') : 'N/A' }}</td>
+                        <td>{{ seminar.statut }}</td>
+                        <td>
+                            <a href="#" class="btn btn-sm btn-outline-primary">Voir</a>
+
+                            {% if seminar.statut == 'validé' %}
+                                <a href="{{ path('organisateur_ajouter_resume', {id: seminar.id}) }}" class="btn btn-sm btn-outline-success">Ajouter résumé</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

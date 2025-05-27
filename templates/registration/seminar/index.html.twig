@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes Séminaires{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Mes Séminaires</h1>
+
+    {% if seminars is empty %}
+        <p>Vous n'avez encore aucun séminaire.</p>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for seminar in seminars %}
+                <tr>
+                    <td>{{ seminar.title }}</td>
+                    <td>{{ seminar.date|date('d/m/Y') }}</td>
+                    <td>{{ seminar.statut }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

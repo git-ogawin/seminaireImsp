@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des utilisateurs{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4">👥 Gestion des utilisateurs</h1>
+
+    {% if users is empty %}
+        <div class="alert alert-info text-center">
+            Aucun utilisateur trouvé.
+        </div>
+    {% else %}
+        <div class="table-responsive shadow-sm rounded">
+            <table class="table table-hover align-middle">
+                <thead class="table-primary">
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Rôles</th>
+                        <th scope="col" class="text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>
+                                <i class="bi bi-envelope-fill me-2 text-secondary"></i>
+                                {{ user.email }}
+                            </td>
+                            <td>
+                                {% for role in user.roles %}
+                                    <span class="badge bg-info text-dark me-1">{{ role|replace({'ROLE_': ''}) }}</span>
+                                {% else %}
+                                    <span class="text-muted fst-italic">Aucun rôle</span>
+                                {% endfor %}
+                            </td>
+                            <td class="text-center">
+                                <a href="{{ path('admin_user_edit', {'id': user.id}) }}" 
+                                   class="btn btn-sm btn-outline-primary" 
+                                   title="Modifier les rôles">
+                                   <i class="bi bi-pencil-square"></i> Modifier
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Historique des Demandes{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h1>Historique des Demandes de Séminaires</h1>
+
+    {% if demandes is empty %}
+        <p>Aucune demande enregistrée.</p>
+    {% else %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date proposée</th>
+                    <th>Statut</th>
+                    <th>Date de création</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for demande in demandes %}
+                <tr>
+                    <td>{{ demande.title }}</td>
+                    <td>{{ demande.date|date('d/m/Y') }}</td>
+                    <td>{{ demande.statut }}</td>
+                    <td>
+                        {% if demande.requestedAt %}
+                            {{ demande.requestedAt|date('d/m/Y H:i') }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

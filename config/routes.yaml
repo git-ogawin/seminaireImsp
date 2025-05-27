@@ -1,0 +1,71 @@
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+app_logout:
+    path: /logout
+app_home:
+    path: /
+    controller: App\Controller\HomeController::index
+admin_dashboard:
+    path: /admin/dashboard
+    controller: App\Controller\AdminController::dashboard
+
+organisateur_dashboard:
+    path: /organisateur/dashboard
+    controller: App\Controller\OrganisateurController::dashboard
+
+admin_evaluer_seminaire:
+    path: /admin/seminaire/{id}/evaluer
+    controller: App\Controller\AdminController::evaluer
+
+admin_user_edit:
+    path: /admin/users/{id}/edit
+    controller: App\Controller\AdminController::editUser
+    requirements:
+        id: \d+
+admin_manage_seminars:
+    path: /admin/seminaires
+    controller: App\Controller\AdminController::listSeminars
+
+admin_manage_users:
+    path: /admin/users
+    controller: App\Controller\AdminController::listUsers
+organisateur_manage_seminars:
+    path: /organisateur/seminars
+    controller: App\Controller\OrganisateurController::manageSeminars
+
+organisateur_demande:
+    path: /organisateur/demande
+    controller: App\Controller\OrganisateurController::demande
+
+organisateur_ajouter_resume:
+    path: /organisateur/seminaire/{id}/ajouter-resume
+    controller: App\Controller\OrganisateurController::ajouterResume
+
+admin_reports:
+    path: /admin/reports
+    controller: App\Controller\AdminController::reports
+public_seminaire_past:
+    path: /public/seminaire/past
+    controller: App\Controller\PublicController::pastSeminars
+
+app_seminar_create:
+    path: seminaire/create
+    controller: App\Controller\SeminarController::create
+app_seminar_edit:
+    path: /seminaire/edit/{id}
+    controller: App\Controller\SeminarController::edit
+app_seminar_delete:
+    path: /seminaire/delete{id}
+    controller: App\Controller\SeminarController::delete
+app_seminar_idex:
+    path: /seminaire/delete{id}
+    controller: App\Controller\SeminarController::delete
+seminaire_show:
+    path: /seminaire/{id}
+    controller: App\Controller\SeminarController::show

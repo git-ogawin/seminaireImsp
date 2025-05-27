@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier les rôles de {{ user.email }}{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow border-0">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Modifier les rôles de <strong>{{ user.email }}</strong></h5>
+                </div>
+
+                <div class="card-body">
+                    {% for message in app.flashes('error') %}
+                        <div class="alert alert-danger">{{ message }}</div>
+                    {% endfor %}
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">{{ message }}</div>
+                    {% endfor %}
+
+                    <form method="post" novalidate>
+                        <div class="mb-3 form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="role_admin"
+                                name="roles[]"
+                                value="ROLE_ADMIN"
+                                {{ 'ROLE_ADMIN' in user.roles ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="role_admin">Administrateur</label>
+                        </div>
+
+                        <div class="mb-4 form-check">
+                            <input
+                                type="checkbox"
+                                class="form-check-input"
+                                id="role_organisateur"
+                                name="roles[]"
+                                value="ROLE_ORGANISATEUR"
+                                {{ 'ROLE_ORGANISATEUR' in user.roles ? 'checked' : '' }}
+                            >
+                            <label class="form-check-label" for="role_organisateur">Organisateur</label>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ path('admin_manage_users') }}" class="btn btn-outline-secondary">
+                                ← Retour à la liste
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                💾 Enregistrer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Demande de Séminaire{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <div class="card shadow p-4">
+        <h2 class="mb-4">Créer une nouvelle demande de séminaire</h2>
+
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+            <div class="mb-3">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.title) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.summary) }}
+                {{ form_widget(form.summary, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.summary) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.date) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.date) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.file) }}
+                {{ form_widget(form.file, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.file) }}
+            </div>
+
+            <button type="submit" class="btn btn-primary">Soumettre la demande</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Séminaire{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 border-0 rounded">
+                <h1 class="h3 mb-4 text-primary">{{ seminaire.title }}</h1>
+
+                <div class="mb-3">
+                    <h5 class="text-muted">Résumé :</h5>
+                    <p class="fs-5">{{ seminaire.summary }}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h5 class="text-muted">📅 Date et Heure :</h5>
+                    <p>{{ seminaire.date|date('d/m/Y à H:i') }}</p>
+                </div>
+
+                <div class="mb-3">
+                    <h5 class="text-muted">👨‍🏫 Présentateur :</h5>
+                    <p>{{ seminaire.presenter.firstname }}</p>
+                </div>
+
+                {% if seminaire.file %}
+                    <div class="mb-4">
+                        <h5 class="text-muted">📄 Fichier associé :</h5>
+                        <a href="{{ asset('uploads/seminaires/' ~ seminaire.file) }}" 
+                           target="_blank" class="btn btn-outline-primary">
+                            Télécharger le fichier
+                        </a>
+                    </div>
+                {% endif %}
+
+                <a href="{{ path('app_home') }}" class="btn btn-secondary mt-3">
+                    ← Retour à l'accueil
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

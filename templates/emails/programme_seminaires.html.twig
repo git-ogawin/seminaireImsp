@@ -1,0 +1,19 @@
+<h2>Programmation des séminaires à venir</h2>
+
+<p>Bonjour,</p>
+
+<p>Voici la programmation des séminaires validés prévus dans les prochains jours :</p>
+
+<ul>
+    {% for seminar in seminars %}
+        <li>
+            <strong>{{ seminar.title }}</strong><br>
+            Date : {{ seminar.date ? seminar.date|date('d/m/Y H:i') : 'N/A' }}<br>
+            Présenté par : {{ seminar.presenter.firstName }}<br>
+            Résumé : {{ seminar.summary|default('Pas de résumé disponible') }}
+        </li>
+    {% endfor %}
+</ul>
+
+<p>Merci de votre attention.</p>
+<p>L'équipe de l'IMSP</p>

@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Évaluer un Séminaire{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4 text-center text-primary">📝 Évaluation du Séminaire</h1>
+
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="card-header bg-light">
+            <h4 class="mb-0 text-secondary">{{ seminaire.title }}</h4>
+        </div>
+        <div class="card-body">
+            <p class="mb-3">
+                <strong>Résumé :</strong><br>
+                <span class="text-muted">{{ seminaire.description }}</span>
+            </p>
+
+            <p class="mb-2">
+                <strong>Date & Heure :</strong><br>
+                {% if seminaire.date %}
+                    <span class="badge bg-info">{{ seminaire.date|date('d/m/Y H:i') }}</span>
+                {% else %}
+                    <span class="text-muted fst-italic">Non programmée</span>
+                {% endif %}
+            </p>
+
+            <p>
+                <strong>Fichier joint :</strong><br>
+                {% if seminaire.file %}
+                    <a href="{{ asset('uploads/seminaires/' ~ seminaire.file) }}"
+                       class="btn btn-outline-primary btn-sm mt-1"
+                       target="_blank">
+                        📄 Télécharger le fichier
+                    </a>
+                {% else %}
+                    <span class="text-muted">Aucun fichier déposé.</span>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">📋 Formulaire d’évaluation</h5>
+        </div>
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+
+            <div class="mb-3">
+                {{ form_label(form.statut, 'Statut', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.statut, {'attr': {'class': 'form-select'}}) }}
+                {{ form_errors(form.statut) }}
+            </div>
+
+            <div class="mb-3">
+                {{ form_label(form.commentaire, 'Commentaire', {'label_attr': {'class': 'form-label'}}) }}
+                {{ form_widget(form.commentaire, {
+                    'attr': {
+                        'class': 'form-control',
+                        'rows': '4',
+                        'placeholder': 'Rédiger votre commentaire ici...'
+                    }
+                }) }}
+                {{ form_errors(form.commentaire) }}
+            </div>
+
+            <div class="d-flex justify-content-end">
+                <a href="{{ path('admin_dashboard') }}" class="btn btn-outline-secondary me-2">← Annuler</a>
+                <button type="submit" class="btn btn-success">
+                    ✅ Valider l’évaluation
+                </button>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+<script>
+(() => {
+    'use strict'
+    const forms = document.querySelectorAll('.needs-validation')
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()
+</script>
+{% endblock %}

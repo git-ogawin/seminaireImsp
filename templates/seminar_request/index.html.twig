@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes demandes de séminaire{% endblock %}
+
+{% block body %}
+<h1>Faire une demande de séminaire</h1>
+
+<a href="{{ path('seminar_request_new') }}">Nouvelle demande</a>
+
+<h2>Historique de mes demandes</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Date de demande</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for request in seminarRequests %}
+        <tr>
+            <td>{{ request.title }}</td>
+            <td>{{ request.requestedAt|date('d/m/Y') }}</td>
+            <td>{{ request.statut }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">Aucune demande pour le moment.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

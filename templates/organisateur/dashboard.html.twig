@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tableau de bord Organisateur{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Tableau de bord Organisateur</h1>
+        <div>
+            <span class="me-3">Connecté en tant que : <strong>{{ app.user.email }}</strong></span>
+            <a href="{{ path('app_logout') }}" class="btn btn-outline-danger btn-sm">Se déconnecter</a>
+        </div>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        Gérez vos séminaires, consultez les inscriptions, et modifiez vos événements.
+    </div>
+
+    <div class="row g-3">
+        <div class="col-md-6">
+            <a href="{{ path('organisateur_manage_seminars') }}" class="btn btn-primary w-100 py-3 fs-5">
+                Mes séminaires
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="{{ path('organisateur_demande') }}" class="btn btn-success w-100 py-3 fs-5">
+                Demander un nouveau séminaire
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

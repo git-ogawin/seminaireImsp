@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des abonnés{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1>Liste des abonnés aux notifications</h1>
+
+    {% if subscribers is empty %}
+        <div class="alert alert-info">Aucun abonné trouvé.</div>
+    {% else %}
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Date d'abonnement</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for sub in subscribers %}
+                    <tr>
+                        <td>{{ sub.email }}</td>
+                        <td>{{ sub.subscribedAt|date('d/m/Y H:i') }}</td>
+                        <td>
+                            <form method="post" action="{{ path('admin_subscribers_delete', {id: sub.id}) }}" onsubmit="return confirm('Supprimer cet abonné ?');">
+                                <input type="hidden" name="_method" value="POST" />
+                                <button class="btn btn-danger btn-sm">Supprimer</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}

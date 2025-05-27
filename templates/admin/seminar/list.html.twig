@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Administration - Séminaires à évaluer{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center text-primary">Administration — Séminaires à évaluer</h1>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle shadow-sm">
+            <thead class="table-primary">
+                <tr class="text-center">
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for seminar in seminaires %}
+                    <tr>
+                        <td>{{ seminar.title }}</td>
+                        <td>
+                            {% if seminar.date is not empty %}
+                                {{ seminar.date|date('d/m/Y H:i') }}
+                            {% else %}
+                                <span class="text-muted">N/A</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ seminar.description|length > 50 ? seminar.description|slice(0, 50) ~ '...' : seminar.description }}</td>
+                        <td>
+                            <span class="badge bg-{{ seminar.statut == 'valide' ? 'success' : (seminar.statut == 'rejete' ? 'danger' : 'warning') }}">
+                                {{ seminar.statut|capitalize }}
+                            </span>
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ path('admin_evaluer_seminaire', {'id': seminar.id}) }}" class="btn btn-sm btn-outline-primary me-2">
+                                ✍️ Évaluer
+                            </a>
+
+                            <form action="{{ path('app_seminar_delete', {'id': seminar.id}) }}" method="post" class="d-inline" onsubmit="return confirm('Supprimer ce séminaire ?');">
+                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ seminar.id) }}">
+                                <button type="submit" class="btn btn-sm btn-outline-danger">
+                                    🗑 Supprimer
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center text-muted py-4">Aucun séminaire trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,8 @@
+﻿vendor/
+var/
+.env.local
+.env.*.local
+node_modules/
+public/build/
+.idea/
+*.lock

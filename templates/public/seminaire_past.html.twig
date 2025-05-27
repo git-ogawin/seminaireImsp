@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Séminaires Passés{% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <h1 class="mb-4">Séminaires Passés</h1>
+
+    {% if seminars is empty %}
+        <div class="alert alert-info">Aucun séminaire passé trouvé.</div>
+    {% else %}
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date</th>
+                    <th>Présentateur</th>
+                    <th>Télécharger</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for seminar in seminars %}
+                    <tr>
+                        <td>{{ seminar.title }}</td>
+                        <td>{{ seminar.date ? seminar.date|date('d/m/Y H:i') : 'N/A' }}</td>
+                        <td>{{ seminar.presenter.firstName }}</td>
+                        <td>
+                            {% if seminar.file %}
+                                <a href="{{ asset('uploads/seminars/' ~ seminar.file) }}" 
+                                   class="btn btn-sm btn-primary" download>
+                                   Télécharger
+                                </a>
+                            {% else %}
+                                <span class="text-muted">Pas de fichier</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</div>
+{% endblock %}
