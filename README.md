@@ -137,47 +137,46 @@ Projet encadré par **Dr. SANDA MAHAMA AMADOU TIDJANI**
 
 ### 🏠 Page d’accueil (publique)
 
-![Accueil](screenshots/accueil.png)  
+![Accueil](screenshots/accueil.jpg)  
 *Figure 1 – Page d’accueil avec liste des séminaires à venir et formulaire d’abonnement email.*
 
 ---
 
 ### 📝 Formulaire d’inscription
 
-![Inscription](screenshots/inscription.png)  
+![Inscription](screenshots/inscription.jpg)  
 *Figure 2 – Formulaire d’inscription avec mot de passe spécial pour les administrateurs.*
 
 ---
 
 ### 📋 Tableau de bord Administrateur
 
-![Admin Dashboard](screenshots/admin-dashboard.png)  
+![Admin Dashboard](screenshots/admin-dashboard.jpg)  
 *Figure 3 – Tableau de bord de l’administrateur : accès à la gestion des séminaires, utilisateurs et statistiques.*
 
 ---
 
 ### 👤 Tableau de bord Organisateur
 
-![Organisateur Dashboard](screenshots/organisateur-dashboard.png)  
+![Organisateur Dashboard](screenshots/organisateur-dashboard.jpg)  
 *Figure 4 – Tableau de bord de l’organisateur : consultation des séminaires et soumission de nouvelles demandes.*
 
 ---
 
 ### 📨 Formulaire de demande de séminaire
 
-![Demande Séminaire](screenshots/demande-seminaire.png)  
+![Demande Séminaire](screenshots/demande-seminaire.jpg)  
 *Figure 5 – Formulaire permettant à un organisateur de proposer un nouveau séminaire.*
 
 ---
 
 ### 📚 Séminaires passés
 
-![Archives](screenshots/seminaires-passes.png)  
+![Archives](screenshots/seminaires-passes.jpg)  
 *Figure 7 – Page publique affichant les anciens séminaires avec lien de téléchargement des fichiers.*
 
 ---
 
-
 ## 🔗 Lien du projet GitHub
 
-👉 [https://github.com/TON_PSEUDO/gestion-seminaires](https://github.com/TON_PSEUDO/gestion-seminaires)
+👉 [https://github.com/git-ogawin/seminaireImsp](https://github.com/git-ogawin/seminaireImsp)
