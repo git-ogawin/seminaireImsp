@@ -4,6 +4,12 @@
 Ce projet a été développé dans le cadre du **projet de fin de cours en conception web** (Licence 3) à l’**Institut de Mathématiques et de Sciences Physiques (IMSP)**.  
 Il permet la gestion complète des séminaires scientifiques organisés par les entités de recherche de l’Institut.
 
+## 📄 Rapport du projet
+
+Vous pouvez consulter ou télécharger le rapport ici :  
+👉 [Télécharger le rapport de projet (PDF)](rapport/rapport-seminaire.pdf)
+
+
 ## 🧾 Résumé du projet
 
 - Application web développée avec **Symfony 6**.
